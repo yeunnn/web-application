@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage | Add Appointments</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="title">Distributed DB App</div>
+            <div class="nav-links">
+                <a href="/appointments">View Appointments</a>
+                <a href="/">Add Appointment</a>
+            </div>
+        </div>
+    </nav>
+
+    <h1>Add New Appointment</h1>
+    <form method="POST" action="/appointments">
+        <input type="text" name="patient_name" placeholder="Patient Name" required>
+        <input type="date" name="date_of_appointment" required>
+        <input type="text" name="hospital" placeholder="Hospital" required>
+        <input type="text" name="doctor" placeholder="Doctor" required>
+        <select name="region">
+            <option value="Central">Central</option>
+            <option value="Luzon">Luzon</option>
+            <option value="Visayas">Visayas</option>
+            <option value="Mindanao">Mindanao</option>
+        </select>
+        <button type="submit">Add Appointment</button>
+    </form>
+
+</body>
+</html>

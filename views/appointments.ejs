@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Appointments</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="title">Distributed DB App</div>
+            <div class="nav-links">
+                <a href="/appointments">View Appointments</a>
+                <a href="/">Add Appointment</a>
+            </div>
+        </div>
+    </nav>
+    <h1>Appointments</h1>
+    
+    <!-- Search Form -->
+    <div class="left">
+        <form action="/appointments/search" method="GET" style="margin-bottom: 20px;">
+            <input type="text" name="search" placeholder="Search by patient name, hospital, or doctor" required>
+            <button type="submit">Search</button>
+            <a href="/appointments" class="clearbtn">Clear Search</a>
+        </form>
+    </div>
+
+    <div class="right">
+        <div class="space">
+            <b>Reports:</b> <a href="/reports/hospitals" class="report-button">Appointments per Hospital</a>
+            <a href="/reports/doctors" class="report-button">Appointments per Doctor</a>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Patient Name</th>
+            <th>Date</th>
+            <th>Hospital</th>
+            <th>Doctor</th>
+            <th>Region</th>
+            <th>Actions</th>
+        </tr>
+        <% appointments.forEach(function(appointment) { %>
+            <tr>
+                <td><%= appointment.patient_name %></td>
+                <td><%= appointment.date_of_appointment.toISOString().slice(0, 10) %></td>
+                <td><%= appointment.hospital %></td>
+                <td><%= appointment.doctor %></td>
+                <td><%= appointment.region %></td>
+                <td>
+                    <a href="/appointments/edit/<%= appointment.id %>">Edit</a>
+                    <a href="/appointments/delete/<%= appointment.id %>" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>
