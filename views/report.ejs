@@ -23,7 +23,14 @@
         </tr>
         <% data.forEach(function(row) { %>
             <tr>
-                <td><%= row.hospital || row.doctor %></td>
+                <% /* Determine which category to display based on the report title */ %>
+                <% if (title.includes('Hospital')) { %>
+                    <td><%= row.hospital_name %></td>
+                <% } else if (title.includes('Doctor Specialty')) { %>
+                    <td><%= row.doctor_specialty %></td>
+                <% } else { %>
+                    <td>Unknown Category</td>
+                <% } %>
                 <td><%= row.number_of_appointments %></td>
             </tr>
         <% }); %>

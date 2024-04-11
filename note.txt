@@ -2,10 +2,12 @@ CREATE DATABASE IF NOT EXISTS distributed_db;
 USE distributed_db;
 
 CREATE TABLE IF NOT EXISTS appointments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    patient_name VARCHAR(255) NOT NULL,
-    date_of_appointment DATE NOT NULL,
-    hospital VARCHAR(255) NOT NULL,
-    doctor VARCHAR(255) NOT NULL,
-    region ENUM('Luzon', 'Visayas', 'Mindanao', 'Central') NOT NULL DEFAULT 'Central'
+    apptid VARCHAR(255) NOT NULL PRIMARY KEY,
+    date_of_appointment DATE,
+    patient_gender ENUM('MALE', 'FEMALE') NOT NULL,
+    patient_age INT NOT NULL,
+    hospital_name VARCHAR(255),
+    doctor_specialty VARCHAR(255) NOT NULL,
+    doctor_age INT NOT NULL,
+    region ENUM('Luzon', 'Visayas', 'Mindanao') NOT NULL
 );
